@@ -133,4 +133,20 @@ describe('nfe-parser-service', () => {
         });
 
     });
+
+    describe('parseNfeToValue', () => {
+        it('should return value from base64 nfe', async () => {
+
+            for (let mockData of mockDataList) {
+                let base64 = mockData.base64;
+                let value = mockData.totalValue;
+
+                var returnedValue = await inst.parseNfeToValue(base64);
+
+                expect(returnedValue).to.exist;
+                expect(returnedValue).to.be.equal(value);
+            }
+
+        });
+    });
 });
