@@ -1,6 +1,12 @@
 const fs = require('fs');
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect
 const inst = require('../../src/services/nfe-parser-service');
+
+const debug = require('debug');
+debug.enable();
+
+chai.use(require('chai-asserttype'));
 
 describe('nfe-parser-service', () => {
     let mockDataList = [];
@@ -32,6 +38,12 @@ describe('nfe-parser-service', () => {
             expect(inst.getTotalNfeValue).to.exist;
             expect(inst.getTotalNfeValue).to.be.a('function');
         });
+
+        it("should exist the method 'parseNfeToValue'", () => {
+            expect(inst.parseNfeToValue).to.exist;
+            expect(inst.parseNfeToValue).to.be.a('function');
+        });
+
     });
 
     describe('convertBase64ToText', () => {
@@ -65,37 +77,59 @@ describe('nfe-parser-service', () => {
 
             expect(jsonObj).to.exist;
             expect(jsonObj).to.be.instanceOf(Object);
-            expect(jsonObj.root).to.exist;
-            expect(jsonObj.root.child).to.exist;
-            expect(jsonObj.root.child).to.be.equal('Hello!');
+            expect(jsonObj.child).to.exist;
+            expect(jsonObj.child).to.be.equal('Hello!');
         });
 
         it('should convert a XML nfe to Json format', async () => {
-            let xml = mockDataList[0].text;
+            for (let mockData of mockDataList) {
+                let xml = mockData.text;
 
-            let jsonObj = undefined;
-            await inst.convertXMLtoJson(xml).then((result) => {
-                jsonObj = result;
-            });
+                let jsonObj = undefined;
+                await inst.convertXMLtoJson(xml).then((result) => {
+                    jsonObj = result;
+                });
 
-            expect(jsonObj).to.exist;
-            expect(jsonObj.nfeProc).to.exist;
-            expect(jsonObj.nfeProc.NFe).to.exist;
-            expect(jsonObj.nfeProc.NFe.infNFe).to.exist;
-            expect(jsonObj.nfeProc.NFe.infNFe.total).to.exist;
-            expect(jsonObj.nfeProc.NFe.infNFe.total.ICMSTot).to.exist;
-            expect(jsonObj.nfeProc.NFe.infNFe.total.ICMSTot.vProd).to.exist;
-            expect(jsonObj.nfeProc.NFe.infNFe.total.ICMSTot.vProd).to.be.equal('230.72');
+                expect(jsonObj).to.exist;
+                expect(jsonObj.NFe).to.exist;
+                expect(jsonObj.NFe.infNFe).to.exist;
+                expect(jsonObj.NFe.infNFe.total).to.exist;
+                expect(jsonObj.NFe.infNFe.total.ICMSTot).to.exist;
+                expect(jsonObj.NFe.infNFe.total.ICMSTot.vProd).to.exist;
+
+                let vprod = parseFloat(jsonObj.NFe.infNFe.total.ICMSTot.vProd);
+                expect(vprod).to.be.greaterThan(-1);
+            }
         });
     });
 
     describe('getTotalNfeValue', () => {
+        let nfeObj = {}
         before(() => {
-
+            let rawdata = fs.readFileSync('./tests/mock-data/nfe-mock.json');
+            nfeObj = JSON.parse(rawdata);
         });
 
         it('should return total value when a valid nfe json is provided', () => {
 
+            let totalValue = inst.getTotalNfeValue(nfeObj);
+
+            expect(totalValue).to.exist;
+            expect(totalValue).to.be.number();
+
+            let value = parseFloat(totalValue);
+            expect(value).to.be.equal(230.72);
+        });
+
+        it('should return -1 value when a invalid nfe json is provided', () => {
+            var wrongNfeObj = {};
+            let totalValue = inst.getTotalNfeValue(wrongNfeObj);
+
+            expect(totalValue).to.exist;
+            expect(totalValue).to.be.number();
+
+            let value = parseFloat(totalValue);
+            expect(value).to.be.equal(-1);
         });
 
     });
