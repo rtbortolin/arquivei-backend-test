@@ -1,7 +1,8 @@
 const fs = require('fs');
 const chai = require('chai');
 const expect = chai.expect
-const inst = require('../../src/services/nfe-parser-service');
+const rewire = require('rewire');
+const inst = rewire('../../src/services/nfe-parser-service');
 
 const debug = require('debug');
 debug.enable();
@@ -10,6 +11,11 @@ chai.use(require('chai-asserttype'));
 
 describe('nfe-parser-service', () => {
     let mockDataList = [];
+
+    let instConvertBase64ToText = inst.__get__('convertBase64ToText');
+    let instConvertXMLtoJson = inst.__get__('convertXMLtoJson');
+    let instGetTotalNfeValue = inst.__get__('getTotalNfeValue');
+    
     before(() => {
         let rawdata = fs.readFileSync("./tests/mock-data/base64data.json");
         mockDataList = JSON.parse(rawdata);
@@ -25,18 +31,18 @@ describe('nfe-parser-service', () => {
         });
 
         it("should exist the method 'convertBase64ToText'", () => {
-            expect(inst.convertBase64ToText).to.exist;
-            expect(inst.convertBase64ToText).to.be.a('function');
+            expect(instConvertBase64ToText).to.exist;
+            expect(instConvertBase64ToText).to.be.a('function');
         });
 
         it("should exist the method 'convertXMLtoJson'", () => {
-            expect(inst.convertXMLtoJson).to.exist;
-            expect(inst.convertXMLtoJson).to.be.a('function');
+            expect(instConvertXMLtoJson).to.exist;
+            expect(instConvertXMLtoJson).to.be.a('function');
         });
 
         it("should exist the method 'getTotalNfeValue'", () => {
-            expect(inst.getTotalNfeValue).to.exist;
-            expect(inst.getTotalNfeValue).to.be.a('function');
+            expect(instGetTotalNfeValue).to.exist;
+            expect(instGetTotalNfeValue).to.be.a('function');
         });
 
         it("should exist the method 'parseNfeToValue'", () => {
@@ -55,7 +61,7 @@ describe('nfe-parser-service', () => {
                 var base64Input = mockData;
 
                 //action
-                let convertedText = inst.convertBase64ToText(base64Input.base64);
+                let convertedText = instConvertBase64ToText(base64Input.base64);
 
                 //assert 
                 expect(convertedText).to.exist;
@@ -71,7 +77,7 @@ describe('nfe-parser-service', () => {
             let xml = '<root><child>Hello!</child></root>'
 
             let jsonObj = undefined;
-            await inst.convertXMLtoJson(xml).then((result) => {
+            await instConvertXMLtoJson(xml).then((result) => {
                 jsonObj = result;
             });
 
@@ -86,7 +92,7 @@ describe('nfe-parser-service', () => {
                 let xml = mockData.text;
 
                 let jsonObj = undefined;
-                await inst.convertXMLtoJson(xml).then((result) => {
+                await instConvertXMLtoJson(xml).then((result) => {
                     jsonObj = result;
                 });
 
@@ -112,7 +118,7 @@ describe('nfe-parser-service', () => {
 
         it('should return total value when a valid nfe json is provided', () => {
 
-            let totalValue = inst.getTotalNfeValue(nfeObj);
+            let totalValue = instGetTotalNfeValue(nfeObj);
 
             expect(totalValue).to.exist;
             expect(totalValue).to.be.number();
@@ -123,7 +129,7 @@ describe('nfe-parser-service', () => {
 
         it('should return -1 value when a invalid nfe json is provided', () => {
             var wrongNfeObj = {};
-            let totalValue = inst.getTotalNfeValue(wrongNfeObj);
+            let totalValue = instGetTotalNfeValue(wrongNfeObj);
 
             expect(totalValue).to.exist;
             expect(totalValue).to.be.number();

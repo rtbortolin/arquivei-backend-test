@@ -52,8 +52,5 @@ var parseNfeToValue = async (base64input) => {
 }
 
 module.exports = {
-    convertBase64ToText: convertBase64ToText,
-    convertXMLtoJson: convertXMLtoJson,
-    getTotalNfeValue: getTotalNfeValue,
     parseNfeToValue: parseNfeToValue
 }
