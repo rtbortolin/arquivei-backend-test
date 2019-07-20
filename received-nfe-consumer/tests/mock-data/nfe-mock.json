@@ -1,0 +1,379 @@
+{
+    "@versao": "3.10",
+    "NFe": {
+       "infNFe": {
+          "@versao": "3.10",
+          "@Id": "NFe35180104710149000115550010000084031000084036",
+          "ide": {
+             "cUF": "35",
+             "cNF": "00008403",
+             "natOp": "VENDA A CONSUMIDOR",
+             "indPag": "0",
+             "mod": "55",
+             "serie": "1",
+             "nNF": "8403",
+             "dhEmi": "2018-01-30T00:00:00-02:00",
+             "dhSaiEnt": "2018-01-30T13:36:15-02:00",
+             "tpNF": "1",
+             "idDest": "1",
+             "cMunFG": "3548906",
+             "tpImp": "1",
+             "tpEmis": "1",
+             "cDV": "6",
+             "tpAmb": "1",
+             "finNFe": "1",
+             "indFinal": "1",
+             "indPres": "1",
+             "procEmi": "0",
+             "verProc": "1.0.0.0"
+          },
+          "emit": {
+             "CNPJ": "04710149000115",
+             "xNome": "Janke Comercio Frios Lltda Epp.",
+             "xFant": "Hs Frios",
+             "enderEmit": {
+                "xLgr": "Av Sao Carlos",
+                "nro": "2884",
+                "xBairro": "Centro",
+                "cMun": "3548906",
+                "xMun": "SAO CARLOS",
+                "UF": "SP",
+                "CEP": "13560002",
+                "cPais": "1058",
+                "xPais": "BRASIL",
+                "fone": "1633728821"
+             },
+             "IE": "637250292112",
+             "IM": "042900",
+             "CNAE": "4721103",
+             "CRT": "1"
+          },
+          "dest": {
+             "CNPJ": "19427033000140",
+             "xNome": "ARQUIVEI SERVICOS ON LINE LTDA",
+             "enderDest": {
+                "xLgr": "AV DOUTOR CARLOS BOTELHO",
+                "nro": "1863",
+                "xBairro": "CENTRO",
+                "cMun": "3548906",
+                "xMun": "SAO CARLOS",
+                "UF": "SP",
+                "CEP": "13560250",
+                "cPais": "1058",
+                "xPais": "BRASIL"
+             },
+             "indIEDest": "9"
+          },
+          "det": [
+             {
+                "@nItem": "1",
+                "prod": {
+                   "cProd": "160",
+                   "cEAN": null,
+                   "xProd": "PEITO PERU DEF. FAT.",
+                   "NCM": "16023100",
+                   "CEST": "1708500",
+                   "CFOP": "5405",
+                   "uCom": "KG",
+                   "qCom": "2.0000",
+                   "vUnCom": "33.3000000000",
+                   "vProd": "66.60",
+                   "cEANTrib": null,
+                   "uTrib": "KG",
+                   "qTrib": "2.0000",
+                   "vUnTrib": "33.3000000000",
+                   "indTot": "1"
+                },
+                "imposto": {
+                   "vTotTrib": "10.79",
+                   "ICMS": {
+                      "ICMSSN500": {
+                         "orig": "0",
+                         "CSOSN": "500"
+                      }
+                   },
+                   "PIS": {
+                      "PISAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pPIS": "0.0000",
+                         "vPIS": "0.00"
+                      }
+                   },
+                   "COFINS": {
+                      "COFINSAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pCOFINS": "0.0000",
+                         "vCOFINS": "0.00"
+                      }
+                   }
+                }
+             },
+             {
+                "@nItem": "2",
+                "prod": {
+                   "cProd": "301",
+                   "cEAN": null,
+                   "xProd": "QUEIJO MUSSARELA FAT. ESPECIAL",
+                   "NCM": "04061010",
+                   "CFOP": "5102",
+                   "uCom": "KG",
+                   "qCom": "6.0000",
+                   "vUnCom": "14.4900000000",
+                   "vProd": "86.94",
+                   "cEANTrib": null,
+                   "uTrib": "KG",
+                   "qTrib": "6.0000",
+                   "vUnTrib": "14.4900000000",
+                   "indTot": "1"
+                },
+                "imposto": {
+                   "vTotTrib": "14.08",
+                   "ICMS": {
+                      "ICMSSN102": {
+                         "orig": "0",
+                         "CSOSN": "102"
+                      }
+                   },
+                   "PIS": {
+                      "PISAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pPIS": "0.0000",
+                         "vPIS": "0.00"
+                      }
+                   },
+                   "COFINS": {
+                      "COFINSAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pCOFINS": "0.0000",
+                         "vCOFINS": "0.00"
+                      }
+                   }
+                }
+             },
+             {
+                "@nItem": "3",
+                "prod": {
+                   "cProd": "320",
+                   "cEAN": null,
+                   "xProd": "LOMBINHO DEF. FAT. ROSFRIOS",
+                   "NCM": "16010000",
+                   "CEST": "1708200",
+                   "CFOP": "5405",
+                   "uCom": "KG",
+                   "qCom": "1.5000",
+                   "vUnCom": "18.9000000000",
+                   "vProd": "28.35",
+                   "cEANTrib": null,
+                   "uTrib": "KG",
+                   "qTrib": "1.5000",
+                   "vUnTrib": "18.9000000000",
+                   "indTot": "1"
+                },
+                "imposto": {
+                   "vTotTrib": "5.80",
+                   "ICMS": {
+                      "ICMSSN500": {
+                         "orig": "0",
+                         "CSOSN": "500"
+                      }
+                   },
+                   "PIS": {
+                      "PISAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pPIS": "0.0000",
+                         "vPIS": "0.00"
+                      }
+                   },
+                   "COFINS": {
+                      "COFINSAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pCOFINS": "0.0000",
+                         "vCOFINS": "0.00"
+                      }
+                   }
+                }
+             },
+             {
+                "@nItem": "4",
+                "prod": {
+                   "cProd": "445",
+                   "cEAN": null,
+                   "xProd": "PRESUNTO FAT. STA ROSA",
+                   "NCM": "16024900",
+                   "CEST": "1708500",
+                   "CFOP": "5405",
+                   "uCom": "KG",
+                   "qCom": "2.0000",
+                   "vUnCom": "12.4900000000",
+                   "vProd": "24.98",
+                   "cEANTrib": null,
+                   "uTrib": "KG",
+                   "qTrib": "2.0000",
+                   "vUnTrib": "12.4900000000",
+                   "indTot": "1"
+                },
+                "imposto": {
+                   "vTotTrib": "4.05",
+                   "ICMS": {
+                      "ICMSSN500": {
+                         "orig": "0",
+                         "CSOSN": "500"
+                      }
+                   },
+                   "PIS": {
+                      "PISAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pPIS": "0.0000",
+                         "vPIS": "0.00"
+                      }
+                   },
+                   "COFINS": {
+                      "COFINSAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pCOFINS": "0.0000",
+                         "vCOFINS": "0.00"
+                      }
+                   }
+                }
+             },
+             {
+                "@nItem": "5",
+                "prod": {
+                   "cProd": "800",
+                   "cEAN": null,
+                   "xProd": "MORTADELA FAT. PERDIGAO",
+                   "NCM": "16010000",
+                   "CEST": "1708200",
+                   "CFOP": "5405",
+                   "uCom": "KG",
+                   "qCom": "1.5000",
+                   "vUnCom": "15.9000000000",
+                   "vProd": "23.85",
+                   "cEANTrib": null,
+                   "uTrib": "KG",
+                   "qTrib": "1.5000",
+                   "vUnTrib": "15.9000000000",
+                   "indTot": "1"
+                },
+                "imposto": {
+                   "vTotTrib": "4.88",
+                   "ICMS": {
+                      "ICMSSN500": {
+                         "orig": "0",
+                         "CSOSN": "500"
+                      }
+                   },
+                   "PIS": {
+                      "PISAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pPIS": "0.0000",
+                         "vPIS": "0.00"
+                      }
+                   },
+                   "COFINS": {
+                      "COFINSAliq": {
+                         "CST": "01",
+                         "vBC": "0.00",
+                         "pCOFINS": "0.0000",
+                         "vCOFINS": "0.00"
+                      }
+                   }
+                }
+             }
+          ],
+          "total": {
+             "ICMSTot": {
+                "vBC": "0.00",
+                "vICMS": "0.00",
+                "vICMSDeson": "0.00",
+                "vFCPUFDest": "0.00",
+                "vBCST": "0.00",
+                "vST": "0.00",
+                "vProd": "230.72",
+                "vFrete": "0.00",
+                "vSeg": "0.00",
+                "vDesc": "0.00",
+                "vII": "0.00",
+                "vIPI": "0.00",
+                "vPIS": "0.00",
+                "vCOFINS": "0.00",
+                "vOutro": "0.00",
+                "vNF": "230.72",
+                "vTotTrib": "39.60"
+             }
+          },
+          "transp": {
+             "modFrete": "0",
+             "vol": {
+                "qVol": "1"
+             }
+          },
+          "cobr": {
+             "dup": {
+                "nDup": "008403A",
+                "dVenc": "2018-02-06",
+                "vDup": "230.72"
+             }
+          },
+          "infAdic": {
+             "infCpl": "Valor aproximado dos tributos R$ 39,60 (17,16%) Fonte: IBPT"
+          }
+       },
+       "Signature": {
+          "SignedInfo": {
+             "CanonicalizationMethod": {
+                "@Algorithm": "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
+             },
+             "SignatureMethod": {
+                "@Algorithm": "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
+             },
+             "Reference": {
+                "@URI": "#NFe35180104710149000115550010000084031000084036",
+                "Transforms": {
+                   "Transform": [
+                      {
+                         "@Algorithm": "http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+                      },
+                      {
+                         "@Algorithm": "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
+                      }
+                   ]
+                },
+                "DigestMethod": {
+                   "@Algorithm": "http://www.w3.org/2000/09/xmldsig#sha1"
+                },
+                "DigestValue": "/APWtUOq7zmKbLj0zMpPgNx21YA="
+             }
+          },
+          "SignatureValue": "I6Lx8RuFrX2ZrPuQxAxTqqWtIWRWy/lj3hAJcWmVj/iQCGlH7K5GQK/PrvTyuBYVHdHz6lQY4qxrxYZLHjolX5zCTFW4MhCoTHB9gLq3W3hjxdb/xw9XKAatiepVHFxE9EFMGFmx08KU47CZmhoEXkDMjaLU13D/IXUPjJE5jbdCwYZkVbzvGdYIzNHadpembw+vwS5JU78Wxabk6SjAVQwg/2fB+S2LQmqqEjqjm7XlXewE9YLL1n2dvGZxxluaLZ7mabzHIRjUz0aFZatYNZ7PFuGbxVG6nvRTYlUXS38mKvXCplFZh0WLKUvMCGJDndVouGlWC1QhU2UVEcF7Hg==",
+          "KeyInfo": {
+             "X509Data": {
+                "X509Certificate": "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"
+             }
+          }
+       }
+    },
+    "protNFe": {
+       "@versao": "3.10",
+       "infProt": {
+          "@Id": "Id135180067401407",
+          "tpAmb": "1",
+          "verAplic": "SP_NFE_PL_008i2",
+          "chNFe": "35180104710149000115550010000084031000084036",
+          "dhRecbto": "2018-01-30T13:49:33-02:00",
+          "nProt": "135180067401407",
+          "digVal": "/APWtUOq7zmKbLj0zMpPgNx21YA=",
+          "cStat": "100",
+          "xMotivo": "Autorizado o uso da NF-e"
+       }
+    }
+ }

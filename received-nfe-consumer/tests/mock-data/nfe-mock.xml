@@ -1,0 +1,355 @@
+<nfeProc versao="3.10" 
+    xmlns="http://www.portalfiscal.inf.br/nfe">
+    <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+        <infNFe versao="3.10" Id="NFe35180104710149000115550010000084031000084036">
+            <ide>
+                <cUF>35</cUF>
+                <cNF>00008403</cNF>
+                <natOp>VENDA A CONSUMIDOR</natOp>
+                <indPag>0</indPag>
+                <mod>55</mod>
+                <serie>1</serie>
+                <nNF>8403</nNF>
+                <dhEmi>2018-01-30T00:00:00-02:00</dhEmi>
+                <dhSaiEnt>2018-01-30T13:36:15-02:00</dhSaiEnt>
+                <tpNF>1</tpNF>
+                <idDest>1</idDest>
+                <cMunFG>3548906</cMunFG>
+                <tpImp>1</tpImp>
+                <tpEmis>1</tpEmis>
+                <cDV>6</cDV>
+                <tpAmb>1</tpAmb>
+                <finNFe>1</finNFe>
+                <indFinal>1</indFinal>
+                <indPres>1</indPres>
+                <procEmi>0</procEmi>
+                <verProc>1.0.0.0</verProc>
+            </ide>
+            <emit>
+                <CNPJ>04710149000115</CNPJ>
+                <xNome>Janke Comercio Frios Lltda Epp.</xNome>
+                <xFant>Hs Frios</xFant>
+                <enderEmit>
+                    <xLgr>Av Sao Carlos</xLgr>
+                    <nro>2884</nro>
+                    <xBairro>Centro</xBairro>
+                    <cMun>3548906</cMun>
+                    <xMun>SAO CARLOS</xMun>
+                    <UF>SP</UF>
+                    <CEP>13560002</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                    <fone>1633728821</fone>
+                </enderEmit>
+                <IE>637250292112</IE>
+                <IM>042900</IM>
+                <CNAE>4721103</CNAE>
+                <CRT>1</CRT>
+            </emit>
+            <dest>
+                <CNPJ>19427033000140</CNPJ>
+                <xNome>ARQUIVEI SERVICOS ON LINE LTDA</xNome>
+                <enderDest>
+                    <xLgr>AV DOUTOR CARLOS BOTELHO</xLgr>
+                    <nro>1863</nro>
+                    <xBairro>CENTRO</xBairro>
+                    <cMun>3548906</cMun>
+                    <xMun>SAO CARLOS</xMun>
+                    <UF>SP</UF>
+                    <CEP>13560250</CEP>
+                    <cPais>1058</cPais>
+                    <xPais>BRASIL</xPais>
+                </enderDest>
+                <indIEDest>9</indIEDest>
+            </dest>
+            <det nItem="1">
+                <prod>
+                    <cProd>160</cProd>
+                    <cEAN />
+                    <xProd>PEITO PERU DEF. FAT.</xProd>
+                    <NCM>16023100</NCM>
+                    <CEST>1708500</CEST>
+                    <CFOP>5405</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>2.0000</qCom>
+                    <vUnCom>33.3000000000</vUnCom>
+                    <vProd>66.60</vProd>
+                    <cEANTrib />
+                    <uTrib>KG</uTrib>
+                    <qTrib>2.0000</qTrib>
+                    <vUnTrib>33.3000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>10.79</vTotTrib>
+                    <ICMS>
+                        <ICMSSN500>
+                            <orig>0</orig>
+                            <CSOSN>500</CSOSN>
+                        </ICMSSN500>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.0000</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.0000</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="2">
+                <prod>
+                    <cProd>301</cProd>
+                    <cEAN />
+                    <xProd>QUEIJO MUSSARELA FAT. ESPECIAL</xProd>
+                    <NCM>04061010</NCM>
+                    <CFOP>5102</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>6.0000</qCom>
+                    <vUnCom>14.4900000000</vUnCom>
+                    <vProd>86.94</vProd>
+                    <cEANTrib />
+                    <uTrib>KG</uTrib>
+                    <qTrib>6.0000</qTrib>
+                    <vUnTrib>14.4900000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>14.08</vTotTrib>
+                    <ICMS>
+                        <ICMSSN102>
+                            <orig>0</orig>
+                            <CSOSN>102</CSOSN>
+                        </ICMSSN102>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.0000</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.0000</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="3">
+                <prod>
+                    <cProd>320</cProd>
+                    <cEAN />
+                    <xProd>LOMBINHO DEF. FAT. ROSFRIOS</xProd>
+                    <NCM>16010000</NCM>
+                    <CEST>1708200</CEST>
+                    <CFOP>5405</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>1.5000</qCom>
+                    <vUnCom>18.9000000000</vUnCom>
+                    <vProd>28.35</vProd>
+                    <cEANTrib />
+                    <uTrib>KG</uTrib>
+                    <qTrib>1.5000</qTrib>
+                    <vUnTrib>18.9000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>5.80</vTotTrib>
+                    <ICMS>
+                        <ICMSSN500>
+                            <orig>0</orig>
+                            <CSOSN>500</CSOSN>
+                        </ICMSSN500>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.0000</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.0000</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="4">
+                <prod>
+                    <cProd>445</cProd>
+                    <cEAN />
+                    <xProd>PRESUNTO FAT. STA ROSA</xProd>
+                    <NCM>16024900</NCM>
+                    <CEST>1708500</CEST>
+                    <CFOP>5405</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>2.0000</qCom>
+                    <vUnCom>12.4900000000</vUnCom>
+                    <vProd>24.98</vProd>
+                    <cEANTrib />
+                    <uTrib>KG</uTrib>
+                    <qTrib>2.0000</qTrib>
+                    <vUnTrib>12.4900000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>4.05</vTotTrib>
+                    <ICMS>
+                        <ICMSSN500>
+                            <orig>0</orig>
+                            <CSOSN>500</CSOSN>
+                        </ICMSSN500>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.0000</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.0000</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <det nItem="5">
+                <prod>
+                    <cProd>800</cProd>
+                    <cEAN />
+                    <xProd>MORTADELA FAT. PERDIGAO</xProd>
+                    <NCM>16010000</NCM>
+                    <CEST>1708200</CEST>
+                    <CFOP>5405</CFOP>
+                    <uCom>KG</uCom>
+                    <qCom>1.5000</qCom>
+                    <vUnCom>15.9000000000</vUnCom>
+                    <vProd>23.85</vProd>
+                    <cEANTrib />
+                    <uTrib>KG</uTrib>
+                    <qTrib>1.5000</qTrib>
+                    <vUnTrib>15.9000000000</vUnTrib>
+                    <indTot>1</indTot>
+                </prod>
+                <imposto>
+                    <vTotTrib>4.88</vTotTrib>
+                    <ICMS>
+                        <ICMSSN500>
+                            <orig>0</orig>
+                            <CSOSN>500</CSOSN>
+                        </ICMSSN500>
+                    </ICMS>
+                    <PIS>
+                        <PISAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pPIS>0.0000</pPIS>
+                            <vPIS>0.00</vPIS>
+                        </PISAliq>
+                    </PIS>
+                    <COFINS>
+                        <COFINSAliq>
+                            <CST>01</CST>
+                            <vBC>0.00</vBC>
+                            <pCOFINS>0.0000</pCOFINS>
+                            <vCOFINS>0.00</vCOFINS>
+                        </COFINSAliq>
+                    </COFINS>
+                </imposto>
+            </det>
+            <total>
+                <ICMSTot>
+                    <vBC>0.00</vBC>
+                    <vICMS>0.00</vICMS>
+                    <vICMSDeson>0.00</vICMSDeson>
+                    <vFCPUFDest>0.00</vFCPUFDest>
+                    <vBCST>0.00</vBCST>
+                    <vST>0.00</vST>
+                    <vProd>230.72</vProd>
+                    <vFrete>0.00</vFrete>
+                    <vSeg>0.00</vSeg>
+                    <vDesc>0.00</vDesc>
+                    <vII>0.00</vII>
+                    <vIPI>0.00</vIPI>
+                    <vPIS>0.00</vPIS>
+                    <vCOFINS>0.00</vCOFINS>
+                    <vOutro>0.00</vOutro>
+                    <vNF>230.72</vNF>
+                    <vTotTrib>39.60</vTotTrib>
+                </ICMSTot>
+            </total>
+            <transp>
+                <modFrete>0</modFrete>
+                <vol>
+                    <qVol>1</qVol>
+                </vol>
+            </transp>
+            <cobr>
+                <dup>
+                    <nDup>008403A</nDup>
+                    <dVenc>2018-02-06</dVenc>
+                    <vDup>230.72</vDup>
+                </dup>
+            </cobr>
+            <infAdic>
+                <infCpl>Valor aproximado dos tributos R$ 39,60 (17,16%) Fonte: IBPT</infCpl>
+            </infAdic>
+        </infNFe>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+                <Reference URI="#NFe35180104710149000115550010000084031000084036">
+                    <Transforms>
+                        <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                        <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                    </Transforms>
+                    <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                    <DigestValue>/APWtUOq7zmKbLj0zMpPgNx21YA=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>I6Lx8RuFrX2ZrPuQxAxTqqWtIWRWy/lj3hAJcWmVj/iQCGlH7K5GQK/PrvTyuBYVHdHz6lQY4qxrxYZLHjolX5zCTFW4MhCoTHB9gLq3W3hjxdb/xw9XKAatiepVHFxE9EFMGFmx08KU47CZmhoEXkDMjaLU13D/IXUPjJE5jbdCwYZkVbzvGdYIzNHadpembw+vwS5JU78Wxabk6SjAVQwg/2fB+S2LQmqqEjqjm7XlXewE9YLL1n2dvGZxxluaLZ7mabzHIRjUz0aFZatYNZ7PFuGbxVG6nvRTYlUXS38mKvXCplFZh0WLKUvMCGJDndVouGlWC1QhU2UVEcF7Hg==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>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</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe versao="3.10">
+        <infProt Id="Id135180067401407">
+            <tpAmb>1</tpAmb>
+            <verAplic>SP_NFE_PL_008i2</verAplic>
+            <chNFe>35180104710149000115550010000084031000084036</chNFe>
+            <dhRecbto>2018-01-30T13:49:33-02:00</dhRecbto>
+            <nProt>135180067401407</nProt>
+            <digVal>/APWtUOq7zmKbLj0zMpPgNx21YA=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>
