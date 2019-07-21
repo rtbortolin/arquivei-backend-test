@@ -1,5 +1,5 @@
 const Headers = require('node-fetch').Headers;
-//global.fetch = fetch;
+const debug = require('debug')('received-nfe-consumer:arquivei-api-consumer');
 
 let apiKey = '';
 let apiId = '';
@@ -18,8 +18,6 @@ let retrieveNfes = async (resultCallback) => {
     }
 
 };
-
-let getCursorFromNextUrl
 
 let handleApiCall = async (url, callbackPage) => {
 
@@ -44,7 +42,7 @@ let handleApiCall = async (url, callbackPage) => {
             responseBody = body;
         })
         .catch(reason => {
-            console.log(reason);
+            debug("Error calling API", reason);
         });
 
     return responseBody;
