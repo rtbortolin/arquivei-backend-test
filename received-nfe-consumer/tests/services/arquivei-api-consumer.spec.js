@@ -55,6 +55,8 @@ describe('arquivei-api-consumer', () => {
             fetchedStub.reset();
             fetchedStub.restore();
 
+            promise.restore();
+
             inst.__set__(getApiKeysName, originalGetApiKeys);
         });
 
@@ -88,6 +90,16 @@ describe('arquivei-api-consumer', () => {
             expect(callback).to.have.been.calledWith(arquiveiResponseMock1);
             expect(callback).to.have.been.calledWith(arquiveiResponseMock2);
             expect(callback).to.have.been.calledWith(arquiveiResponseMock3);
+        });
+
+        it('should try to call api 5 times when it returns error', async () => {
+            let errorResponseMock = apiMockHelper.loadUnauthorizedResponseMock();
+            promise.resolves(errorResponseMock);
+
+            await inst.retrieveNfes(() => { });
+
+            expect(fetchedStub).to.have.been.callCount(5);
+            expect(fetchedStub).to.have.been.calledWith('https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0');
         });
     });
 

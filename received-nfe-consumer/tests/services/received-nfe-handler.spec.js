@@ -16,24 +16,28 @@ const apiMockHelper = require('./api-mock-helper');
 describe('received-nfe-handler tests', () => {
 
     let stubedApiConsumerRetrieveNfes;
+    let spyHandleApiCallback;
+
+    let inst;
     beforeEach(() => {
+        inst = new ReceivedNfeHandler();
+
         stubedApiConsumerRetrieveNfes = sinon.stub(apiConsumer, 'retrieveNfes');
+
+        spyHandleApiCallback = sinon.spy(inst, '_handleApiCallback');
     });
     afterEach(() => {
         stubedApiConsumerRetrieveNfes.restore();
+        spyHandleApiCallback.restore();
     });
 
     describe('Smoke tests', () => {
         it('should exist the method `startProcess`', () => {
-            let inst = new ReceivedNfeHandler();
-
             expect(inst.startProcess).to.exist;
             expect(inst.startProcess).to.be.a('function');
         });
 
         it('should exist the method `_handleApiCallback`', () => {
-            let inst = new ReceivedNfeHandler();
-
             expect(inst._handleApiCallback).to.exist;
             expect(inst._handleApiCallback).to.be.a('function');
         });
@@ -53,11 +57,11 @@ describe('received-nfe-handler tests', () => {
             expect(stubedApiConsumerRetrieveNfes).to.have.been.calledOnce;
         });
 
-        it('Should pass _handleApiCallback for response callback', async () => {
+        it('Should pass a callback for response callback', async () => {
             inst.startProcess();
 
             expect(stubedApiConsumerRetrieveNfes).to.have.been.calledOnce;
-            expect(stubedApiConsumerRetrieveNfes).to.have.been.calledWith(inst._handleApiCallback);
+            expect(stubedApiConsumerRetrieveNfes).to.have.been.calledWith;
         });
     });
 
@@ -93,15 +97,15 @@ describe('received-nfe-handler tests', () => {
             expect(spyParser).to.have.been.called;
         });
 
-        it('Should call parser for each nfe on body page', () => {
+        it('Should call parser for each nfe on body page', async () => {
 
-            inst._handleApiCallback(apiResponseMock);
+            await inst._handleApiCallback(apiResponseMock);
 
             expect(spyParser).to.have.been.callCount(5);
         });
 
-        it('Should call persistence api for each nfe', () => {
-            inst._handleApiCallback(apiResponseMock);
+        it('Should call persistence api for each nfe', async () => {
+            await inst._handleApiCallback(apiResponseMock);
 
             expect(spyNfeRepository).to.have.been.called;
         });

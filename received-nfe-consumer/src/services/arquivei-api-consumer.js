@@ -9,14 +9,34 @@ let retrieveNfes = async (resultCallback) => {
 
     getApiKeys();
 
-    let startUrl = `https://apiuat.arquivei.com.br/v1/nfe/received?limit=${pageSize}&cursor=0`;
+    let apiUrl = `https://apiuat.arquivei.com.br/v1/nfe/received?limit=${pageSize}&cursor=0`;
 
-    let response = await handleApiCall(startUrl, resultCallback);
+    let response = {};
+    let newResponse = response;
+    let attempts = 0;
+    let totalCount = 0;
+    do {
+        newResponse = await handleApiCall(apiUrl, resultCallback);
+        if (newResponse.status) {
+            if (newResponse.status.code) {
+                if (newResponse.status.code != 200) {
+                    debug("Error retrieving data from external api. Trying again!.");
+                    response.count = pageSize;
+                    attempts++;
+                    if (attempts >= 5) {
+                        debug(`More than 5 attempts to retrieve data from [${apiUrl}]. Canceling process!`);
+                        break;
+                    }
+                } else {
+                    response = newResponse;
+                    apiUrl = response.page.next;
+                    totalCount += parseInt(response.count);
+                }
+            }
+        }
+    } while (response.count >= pageSize);
 
-    while (response.count >= pageSize) {
-        response = await handleApiCall(response.page.next, resultCallback);
-    }
-
+    debug(`End NFe processing! Retrieved [${totalCount}] NFes.`);
 };
 
 let handleApiCall = async (url, callbackPage) => {
@@ -36,10 +56,14 @@ let handleApiCall = async (url, callbackPage) => {
             return response.json();
         })
         .then(body => {
+            responseBody = body;
+            if (body.status.code != 200) {
+                debug(body);
+                throw new Error(body.error);
+            }
             if (callbackPage) {
                 callbackPage(body);
             }
-            responseBody = body;
         })
         .catch(reason => {
             debug("Error calling API", reason);
