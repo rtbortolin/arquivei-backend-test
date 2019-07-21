@@ -12,6 +12,8 @@ let fetchedStub = sinon.stub(global, 'fetch');
 const rewire = require('rewire');
 const inst = rewire('../../src/services/arquivei-api-consumer');
 
+const apiMockHelper = require('./api-mock-helper');
+
 const getApiKeysName = 'getApiKeys';
 
 describe('arquivei-api-consumer', () => {
@@ -71,9 +73,9 @@ describe('arquivei-api-consumer', () => {
 
         it('should call callback function for each returned page', async () => {
             let callback = sinon.stub();
-            let arquiveiResponseMock1 = loadResponseMock(1);
-            let arquiveiResponseMock2 = loadResponseMock(2);
-            let arquiveiResponseMock3 = loadResponseMock(3);
+            let arquiveiResponseMock1 = apiMockHelper.loadResponseMock(1);
+            let arquiveiResponseMock2 = apiMockHelper.loadResponseMock(2);
+            let arquiveiResponseMock3 = apiMockHelper.loadResponseMock(3);
 
             let startUrl = 'https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0';
             promise.withArgs(startUrl).resolves(arquiveiResponseMock1);
@@ -87,12 +89,6 @@ describe('arquivei-api-consumer', () => {
             expect(callback).to.have.been.calledWith(arquiveiResponseMock2);
             expect(callback).to.have.been.calledWith(arquiveiResponseMock3);
         });
-
-        loadResponseMock = (page) => {
-            let arquiveiResponseMock = JSON.parse(fs.readFileSync(`./tests/mock-data/api-arquivei-response-mock-page-${page}.json`));
-            arquiveiResponseMock.json = () => { return arquiveiResponseMock; };
-            return arquiveiResponseMock;
-        }
     });
 
     describe('getApiKeys', () => {
