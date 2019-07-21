@@ -3,9 +3,10 @@
 class ReceivedNfeHandler {
 
 
-    constructor(apiConsumer, nfeParser) {
+    constructor(apiConsumer, nfeParser, nfeRepository) {
         this.apiConsumer = apiConsumer;
         this.nfeParser = nfeParser;
+        this.nfeRepository = nfeRepository;
     }
 
     startProcess() {
@@ -15,9 +16,17 @@ class ReceivedNfeHandler {
     _handleApiCallback(bodyResponse) {
 
         for (let i = 0; i < bodyResponse.count; i++) {
-            let total = this.nfeParser.parseNfeToObject(bodyResponse.data[i].xml);
+            let nfeData = bodyResponse.data[i];
+            let nfe = this.nfeParser.parseNfeToObject(nfeData.xml);
+            nfe.access_key = nfeData.access_key;
+
+            this._saveNfe(nfe);
         }
 
+    }
+
+    _saveNfe(nfe) {
+        this.nfeRepository.save(nfe);
     }
 }
 

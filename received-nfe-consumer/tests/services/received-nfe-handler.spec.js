@@ -1,4 +1,3 @@
-const fs = require('fs');
 const chai = require('chai');
 const expect = chai.expect
 const sinon = require('sinon');
@@ -7,9 +6,7 @@ chai.use(sinonChai);
 
 global.fetch = require('node-fetch');
 global.originalFetch = global.fetch;
-let fetchedStub = sinon.stub(global, 'fetch');
 
-const rewire = require('rewire');
 const ReceivedNfeHandler = require('../../src/services/received-nfe-handler').ReceivedNfeHandler;
 const apiConsumer = require('../../src/services/arquivei-api-consumer');
 const nfeParser = require('../../src/services/nfe-parser-service');
@@ -68,9 +65,17 @@ describe('received-nfe-handler tests', () => {
 
         let spyParser;
         let apiResponseMock;
+        let spyNfeRepository;
+
+        let inst;
 
         beforeEach(() => {
             spyParser = sinon.spy(nfeParser, 'parseNfeToObject');
+
+            let nfeRepository = { save: function () { } };
+            spyNfeRepository = sinon.spy(nfeRepository, 'save');
+
+            inst = new ReceivedNfeHandler(apiConsumer, nfeParser, nfeRepository);
         });
 
         afterEach(() => {
@@ -82,7 +87,6 @@ describe('received-nfe-handler tests', () => {
         });
 
         it('Should call parser to get nfe content', () => {
-            let inst = new ReceivedNfeHandler(apiConsumer, nfeParser);
 
             inst._handleApiCallback(apiResponseMock);
 
@@ -90,11 +94,16 @@ describe('received-nfe-handler tests', () => {
         });
 
         it('Should call parser for each nfe on body page', () => {
-            let inst = new ReceivedNfeHandler(apiConsumer, nfeParser);
 
             inst._handleApiCallback(apiResponseMock);
 
             expect(spyParser).to.have.been.callCount(5);
+        });
+
+        it('Should call persistence api for each nfe', () => {
+            inst._handleApiCallback(apiResponseMock);
+
+            expect(spyNfeRepository).to.have.been.called;
         });
     });
 });
