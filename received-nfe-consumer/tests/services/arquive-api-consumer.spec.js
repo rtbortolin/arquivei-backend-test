@@ -1,25 +1,24 @@
+const fs = require('fs');
 const chai = require('chai');
 const expect = chai.expect
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
-const sinonStubPromise = require('sinon-stub-promise');
+chai.use(sinonChai);
 
 global.fetch = require('node-fetch');
-const fetchedStub = sinon.stub(global, 'fetch');
+global.originalFetch = global.fetch;
+let fetchedStub = sinon.stub(global, 'fetch');
 
 const rewire = require('rewire');
 const inst = rewire('../../src/services/arquivei-api-consumer');
 
-chai.use(sinonChai);
-sinonStubPromise(sinon);
+const getApiKeysName = 'getApiKeys';
 
 describe('arquivei-api-consumer', () => {
 
-    let instGetApiKeys = inst.__get__('getApiKeys');
+    let instGetApiKeys = inst.__get__(getApiKeysName);
 
-    afterEach(() => {
-        fetchedStub.restore();
-    })
+    let promise;
 
     describe('Smoke tests', () => {
 
@@ -40,19 +39,60 @@ describe('arquivei-api-consumer', () => {
 
     describe('retrieveNfes', () => {
 
-        it('should call fetch function', () => {
+        let originalGetApiKeys;
+        let stubedGetApiKeys;
+        beforeEach(() => {
+            promise = fetchedStub.returns(new Promise((resp, reason) => { }));
 
+            stubedGetApiKeys = sinon.stub();
+            originalGetApiKeys = inst.__get__(getApiKeysName);
+            inst.__set__(getApiKeysName, stubedGetApiKeys);
+        });
+
+        afterEach(() => {
+            fetchedStub.reset();
+            fetchedStub.restore();
+
+            inst.__set__(getApiKeysName, originalGetApiKeys);
+        });
+
+        it('should call fetch function', () => {
             inst.retrieveNfes();
 
             expect(fetchedStub).to.have.been.calledOnce;
         });
 
         it('should call fetch with correct url', () => {
-
             inst.retrieveNfes();
 
-            expect(fetchedStub).to.have.been.calledWith('https://apiuat.arquivei.com.br/v1/nfe/received');
+            expect(fetchedStub).to.have.been.calledOnce;
+            expect(fetchedStub).to.have.been.calledWith('https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0');
         });
+
+        it('should call callback function for each returned page', async () => {
+            let callback = sinon.stub();
+            let arquiveiResponseMock1 = loadResponseMock(1);
+            let arquiveiResponseMock2 = loadResponseMock(2);
+            let arquiveiResponseMock3 = loadResponseMock(3);
+
+            let startUrl = 'https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0';
+            promise.withArgs(startUrl).resolves(arquiveiResponseMock1);
+            promise.withArgs(arquiveiResponseMock1.page.next).resolves(arquiveiResponseMock2);
+            promise.withArgs(arquiveiResponseMock2.page.next).resolves(arquiveiResponseMock3);
+
+            await inst.retrieveNfes(callback);
+
+            expect(callback).to.have.been.calledThrice;
+            expect(callback).to.have.been.calledWith(arquiveiResponseMock1);
+            expect(callback).to.have.been.calledWith(arquiveiResponseMock2);
+            expect(callback).to.have.been.calledWith(arquiveiResponseMock3);
+        });
+
+        loadResponseMock = (page) => {
+            let arquiveiResponseMock = JSON.parse(fs.readFileSync(`./tests/mock-data/api-arquivei-response-mock-page-${page}.json`));
+            arquiveiResponseMock.json = () => { return arquiveiResponseMock; };
+            return arquiveiResponseMock;
+        }
     });
 
     describe('getApiKeys', () => {
@@ -105,5 +145,4 @@ describe('arquivei-api-consumer', () => {
             }
         });
     });
-
 });

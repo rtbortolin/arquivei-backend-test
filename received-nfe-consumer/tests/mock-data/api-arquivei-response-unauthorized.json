@@ -1,0 +1,7 @@
+{
+    "status": {
+        "code": 401,
+        "message": "Unauthorized"
+    },
+    "error": "Unauthorized. Invalid X-API-KEY or X-API-ID."
+}
