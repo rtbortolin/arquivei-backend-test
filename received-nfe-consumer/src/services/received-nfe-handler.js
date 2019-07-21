@@ -15,7 +15,7 @@ class ReceivedNfeHandler {
     _handleApiCallback(bodyResponse) {
 
         for (let i = 0; i < bodyResponse.count; i++) {
-            let total = this.nfeParser.parseNfeToValue(bodyResponse.data[i].xml);
+            let total = this.nfeParser.parseNfeToObject(bodyResponse.data[i].xml);
         }
 
     }

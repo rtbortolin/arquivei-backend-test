@@ -45,12 +45,16 @@ var getTotalNfeValue = (nfeObj) => {
     return parseFloat(nfeObj.NFe.infNFe.total.ICMSTot.vProd);
 };
 
-var parseNfeToValue = async (base64input) => {
+var parseNfeToObject = async (base64input) => {
     let xml = convertBase64ToText(base64input);
     let nfeObj = await convertXMLtoJson(xml);
-    return getTotalNfeValue(nfeObj);
+    let total = getTotalNfeValue(nfeObj);
+    return {
+        xml: xml,
+        total: total
+    }
 }
 
 module.exports = {
-    parseNfeToValue: parseNfeToValue
+    parseNfeToObject: parseNfeToObject
 }

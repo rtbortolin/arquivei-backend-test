@@ -70,7 +70,7 @@ describe('received-nfe-handler tests', () => {
         let apiResponseMock;
 
         beforeEach(() => {
-            spyParser = sinon.spy(nfeParser, 'parseNfeToValue');
+            spyParser = sinon.spy(nfeParser, 'parseNfeToObject');
         });
 
         afterEach(() => {

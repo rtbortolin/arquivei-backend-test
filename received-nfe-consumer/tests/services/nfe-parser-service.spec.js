@@ -45,9 +45,9 @@ describe('nfe-parser-service', () => {
             expect(instGetTotalNfeValue).to.be.a('function');
         });
 
-        it("should exist the method 'parseNfeToValue'", () => {
-            expect(inst.parseNfeToValue).to.exist;
-            expect(inst.parseNfeToValue).to.be.a('function');
+        it("should exist the method 'parseNfeToObject'", () => {
+            expect(inst.parseNfeToObject).to.exist;
+            expect(inst.parseNfeToObject).to.be.a('function');
         });
 
     });
@@ -140,17 +140,23 @@ describe('nfe-parser-service', () => {
 
     });
 
-    describe('parseNfeToValue', () => {
+    describe('parseNfeToObject', () => {
         it('should return value from base64 nfe', async () => {
 
             for (let mockData of mockDataList) {
                 let base64 = mockData.base64;
                 let value = mockData.totalValue;
 
-                var returnedValue = await inst.parseNfeToValue(base64);
+                let expectedResult = {
+                    xml: mockData.text,
+                    total: value
+                }
+
+                var returnedValue = await inst.parseNfeToObject(base64);
 
                 expect(returnedValue).to.exist;
-                expect(returnedValue).to.be.equal(value);
+                expect(returnedValue.xml).to.be.equal(expectedResult.xml);
+                expect(returnedValue.total).to.be.equal(expectedResult.total);
             }
 
         });
