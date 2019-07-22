@@ -38,11 +38,11 @@ var getTotalNfeValue = (nfeObj) => {
         debug('`nfeObj.NFe.infNFe.total.ICMSTot` is undefined');
         return -1;
     }
-    if (nfeObj.NFe.infNFe.total.ICMSTot.vProd === undefined) {
-        debug('`nfeObj.NFe.infNFe.total.ICMSTot.vProd` is undefined');
+    if (nfeObj.NFe.infNFe.total.ICMSTot.vNF === undefined) {
+        debug('`nfeObj.NFe.infNFe.total.ICMSTot.vNF` is undefined');
         return -1;
     }
-    return parseFloat(nfeObj.NFe.infNFe.total.ICMSTot.vProd);
+    return parseFloat(nfeObj.NFe.infNFe.total.ICMSTot.vNF);
 };
 
 var parseNfeToObject = async (base64input) => {
