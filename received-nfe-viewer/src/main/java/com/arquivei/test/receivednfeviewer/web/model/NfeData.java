@@ -2,6 +2,7 @@ package com.arquivei.test.receivednfeviewer.web.model;
 
 import com.arquivei.test.receivednfeviewer.web.model.base.AuditModel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -17,6 +18,7 @@ public class NfeData extends AuditModel {
     private Float totalValue;
 
     @Column(columnDefinition = "varchar(max)")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String xml;
 
     public NfeData() {
