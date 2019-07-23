@@ -4,9 +4,6 @@ const expect = chai.expect
 const rewire = require('rewire');
 const inst = rewire('../../src/services/nfe-parser-service');
 
-const debug = require('debug');
-debug.enable();
-
 chai.use(require('chai-asserttype'));
 
 describe('nfe-parser-service', () => {
