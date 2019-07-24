@@ -23,8 +23,13 @@ var getTotalNfeValue = (nfeObj) => {
         return -1;
     }
     if (nfeObj.NFe === undefined) {
-        debug('`nfeObj.NFe` is undefined');
-        return -1;
+        if (nfeObj.infNFe) {
+            nfeObj.NFe = { infNFe: nfeObj.infNFe };
+            delete nfeObj.infNFe;
+        } else {
+            debug('`nfeObj.NFe` is undefined');
+            return -1;
+        }
     }
     if (nfeObj.NFe.infNFe === undefined) {
         debug('`nfeObj.NFe.infNFe` is undefined');

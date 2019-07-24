@@ -135,6 +135,20 @@ describe('nfe-parser-service', () => {
             expect(value).to.be.equal(-1);
         });
 
+        it('should fix the NFe object structure when the different on is returned and return the value', () => {
+            let rawdata = fs.readFileSync('./tests/mock-data/nfe-mock-different.json');
+            let nfeObj = JSON.parse(rawdata);
+
+            let totalValue = instGetTotalNfeValue(nfeObj);
+            
+
+            expect(totalValue).to.exist;
+            expect(totalValue).to.be.number();
+
+            let value = parseFloat(totalValue);
+            expect(value).to.be.equal(720.25);
+        });
+
     });
 
     describe('parseNfeToObject', () => {
