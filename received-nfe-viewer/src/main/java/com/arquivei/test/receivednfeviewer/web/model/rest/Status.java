@@ -1,4 +1,4 @@
-package com.arquivei.test.receivednfeviewer.web.model;
+package com.arquivei.test.receivednfeviewer.web.model.rest;
 
 public class Status {
 

@@ -14,7 +14,7 @@ public class NfeData extends AuditModel {
     @Id
     private String accessKey;
 
-    @Column
+    @Column(nullable = false)
     private Float totalValue;
 
     @Column(columnDefinition = "varchar(max)")
