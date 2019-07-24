@@ -43,6 +43,7 @@ describe('arquivei-api-consumer', () => {
 
         let originalGetApiKeys;
         let stubedGetApiKeys;
+
         beforeEach(() => {
             promise = fetchedStub.returns(new Promise((resp, reason) => { }));
 
@@ -70,7 +71,7 @@ describe('arquivei-api-consumer', () => {
             inst.retrieveNfes();
 
             expect(fetchedStub).to.have.been.calledOnce;
-            expect(fetchedStub).to.have.been.calledWith('https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0');
+            expect(fetchedStub).to.have.been.calledWith(`/v1/nfe/received?limit=5&cursor=0`);
         });
 
         it('should call callback function for each returned page', async () => {
@@ -79,7 +80,7 @@ describe('arquivei-api-consumer', () => {
             let arquiveiResponseMock2 = apiMockHelper.loadResponseMock(2);
             let arquiveiResponseMock3 = apiMockHelper.loadResponseMock(3);
 
-            let startUrl = 'https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0';
+            let startUrl = `/v1/nfe/received?limit=5&cursor=0`;
             promise.withArgs(startUrl).resolves(arquiveiResponseMock1);
             promise.withArgs(arquiveiResponseMock1.page.next).resolves(arquiveiResponseMock2);
             promise.withArgs(arquiveiResponseMock2.page.next).resolves(arquiveiResponseMock3);
@@ -99,7 +100,7 @@ describe('arquivei-api-consumer', () => {
             await inst.retrieveNfes(() => { });
 
             expect(fetchedStub).to.have.been.callCount(5);
-            expect(fetchedStub).to.have.been.calledWith('https://apiuat.arquivei.com.br/v1/nfe/received?limit=5&cursor=0');
+            expect(fetchedStub).to.have.been.calledWith(`/v1/nfe/received?limit=5&cursor=0`);
         });
     });
 
@@ -151,6 +152,64 @@ describe('arquivei-api-consumer', () => {
             } catch (err) {
                 expect(err).to.be.instanceOf(Error);
             }
+        });
+
+        it('should throw error if `api-url` is not set on environment variable', () => {
+            delete process.env.ARQUIVEI_API_URL;
+
+            expect(instGetApiKeys).to.throw('`ARQUIVEI_API_URL` not set on environment variable');
+
+            try {
+                instGetApiKeys();
+            } catch (err) {
+                expect(err).to.be.instanceOf(Error);
+            }
+        });
+
+        it('should not throw error if `api-url` is set on environment variable', () => {
+            process.env.ARQUIVEI_API_URL = 'aaa'
+
+            expect(instGetApiKeys).to.not.throw('`ARQUIVEI_API_URL` not set on environment variable');
+
+            try {
+                instGetApiKeys();
+            } catch (err) {
+                expect(err).to.be.instanceOf(Error);
+            }
+        });
+    });
+
+    describe('_getInitialApiUrlToCall', () => {
+        it('Should concatenate `baseApiUrl` with the remaining api path and `pageSize`', () => {
+            let mockUrl = 'http://baseurl.com';
+            let mockPageSize = 7;
+            
+            process.env.ARQUIVEI_API_URL = mockUrl;
+            process.env.ARQUIVEI_API_ID = 'aaa';
+            process.env.ARQUIVEI_API_KEY = 'aaa';
+            process.env.ARQUIVEI_API_PAGE_SIZE = mockPageSize;
+
+            instGetApiKeys();
+
+            let result = inst._getInitialApiUrlToCall();
+
+            expect(result).to.be.equal(`${mockUrl}/v1/nfe/received?limit=${mockPageSize}&cursor=0`);
+        });
+
+        it('Should concatenate `baseApiUrl` with the remaining api path and `pageSize`2', () => {
+            let mockUrl = 'http://anotherbaseurl.com';
+            let mockPageSize = 2;
+            
+            process.env.ARQUIVEI_API_URL = mockUrl;
+            process.env.ARQUIVEI_API_ID = 'aaa';
+            process.env.ARQUIVEI_API_KEY = 'aaa';
+            process.env.ARQUIVEI_API_PAGE_SIZE = mockPageSize;
+
+            instGetApiKeys();
+
+            let result = inst._getInitialApiUrlToCall();
+
+            expect(result).to.be.equal(`${mockUrl}/v1/nfe/received?limit=${mockPageSize}&cursor=0`);
         });
     });
 });

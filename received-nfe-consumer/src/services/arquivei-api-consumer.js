@@ -3,13 +3,18 @@ const debug = require('debug')('received-nfe-consumer:arquivei-api-consumer');
 
 let apiKey = '';
 let apiId = '';
+let apiBaseUrl = '';
 let pageSize = 5;
+
+let getInitialApiUrlToCall = () => {
+    return `${apiBaseUrl}/v1/nfe/received?limit=${pageSize}&cursor=0`;
+}
 
 let retrieveNfes = async (resultCallback) => {
 
     getApiKeys();
 
-    let apiUrl = `https://apiuat.arquivei.com.br/v1/nfe/received?limit=${pageSize}&cursor=0`;
+    let apiUrl = getInitialApiUrlToCall();
 
     let response = {};
     let newResponse = response;
@@ -81,9 +86,14 @@ let getApiKeys = () => {
     if (!apiId)
         throw new Error('`ARQUIVEI_API_ID` not set on environment variable');
 
+    apiBaseUrl = process.env.ARQUIVEI_API_URL;
+    if (!apiBaseUrl)
+        throw new Error('`ARQUIVEI_API_URL` not set on environment variable');
+
     pageSize = process.env.ARQUIVEI_API_PAGE_SIZE || 5;
 }
 
 module.exports = {
-    retrieveNfes: retrieveNfes
+    retrieveNfes: retrieveNfes,
+    _getInitialApiUrlToCall: getInitialApiUrlToCall
 }
