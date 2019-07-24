@@ -15,9 +15,9 @@ spring:
       # Hibernate ddl auto (create, create-drop, validate, update)
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/arquivei-test-db
-    username: postgres
-    password: Postgres2019!
+    url: ${JDBC_URL}
+    username: ${JDBC_USER}
+    password: ${JDBC_PASS}
 
 
 use_jdbc_metadata_defaults: false
