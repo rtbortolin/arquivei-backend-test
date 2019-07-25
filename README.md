@@ -75,3 +75,24 @@ curl -X GET \
 
 - Acesse a URL `http://localhost:49160/api/worker` e aguarde alguns segundos.
 - Acesse a URL `htto://localhost:49161/api/nfe/{alguma chave existente na api da Arquivei}`
+
+
+## Rodandos os testes
+#### Received NFe Viewer
+- Com o Java 8 ou superior configurado, entre na subpasta `received-nfe-viewer` e rode o comando:
+```
+    mvnw clean install
+```
+
+#### Received NFe Consumer
+- Com NodeJS 10 ou superior instalado, entre na subpasta `received-nfe-consumer` e rode os comandos:
+```
+    npm install
+```
+```
+    npm run test:tdd
+```
+- Para ver o relatório de cobertura do código:
+```
+    npm run test:coverage
+```
